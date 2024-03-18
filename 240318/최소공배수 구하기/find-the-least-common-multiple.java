@@ -13,9 +13,9 @@ public class Main {
     }
 
     static void printLCM(int n, int m){
-        for(int i=Math.max(n,m);i<=n*m;i++){
-            if(i%n == 0 && i%m == 0){
-                System.out.println(i);
+        for(int i=Math.min(n,m);i>=1;i--){
+            if(n%i ==0 && m%i == 0){
+                System.out.println((n*m)/i);
                 return;
             }
         }
