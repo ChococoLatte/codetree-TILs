@@ -15,7 +15,7 @@ public class Main {
 
     static void calcGCD(int n, int m){
         for(int i=Math.min(n,m);i>=1;i--){
-            if(Math.max(n,m)%i == 0 && Math.min(n,m)%i==0) { 
+            if(n%i == 0 && m%i==0) { 
                 System.out.println(i);
                 return;
             }
