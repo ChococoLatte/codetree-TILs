@@ -14,7 +14,7 @@ public class Main {
     }
 
     static String calcBasicOperations(int a, String b, int c){
-        String ans = String.valueOf(a)+" "+b+" "+String.valueOf(c)+" = ";
+        String ans = a+" "+b+" "+c+" = ";
         switch(b){
             case "+":
                 ans +=  String.valueOf(a+c);
