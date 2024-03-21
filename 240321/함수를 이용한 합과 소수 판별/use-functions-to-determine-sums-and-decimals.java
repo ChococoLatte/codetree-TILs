@@ -33,8 +33,9 @@ public class Main {
         String strNum = String.valueOf(num);
 
         int sum = 0;
-        for(int i=0;i<strNum.length();i++){
-            sum+=strNum.charAt(i)-'0';
+        while(num!=0){
+            sum+=(num%10);
+            num/=10;
         }
 
         if(sum%2 == 0) return true;
