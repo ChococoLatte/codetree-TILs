@@ -29,12 +29,13 @@ public class Main {
     static boolean isConSecutiveNumberSub(int[] n1Arr, int[] n2Arr){
 
         for(int i=0;i<n1Arr.length;i++){
-            if(n2Arr[0] == n1Arr[i]){
+            boolean findDiff = false;
+            if(n1Arr[i] == n2Arr[0]){
                 for(int j=0;j<n2Arr.length;j++){
-                    if(n2Arr[j] != n1Arr[i+j]) return false;
+                    if(n2Arr[j] != n1Arr[i+j]) findDiff = true;
                 }
-                return true;
             }
+            if(!findDiff) return true;
         }
         return false;
     }
