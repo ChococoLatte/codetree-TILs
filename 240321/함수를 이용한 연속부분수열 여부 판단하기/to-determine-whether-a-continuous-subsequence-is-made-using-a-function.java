@@ -32,6 +32,7 @@ public class Main {
             boolean findDiff = false;
             if(n1Arr[i] == n2Arr[0]){
                 for(int j=0;j<n2Arr.length;j++){
+                    if(i+j>=n1Arr.length) return false;
                     if(n2Arr[j] != n1Arr[i+j]) findDiff = true;
                 }
                 if(!findDiff) return true;
