@@ -14,7 +14,7 @@ public class Main {
 
     static void printLCM(int n, int m){
         int gcd = calcGCD(n,m);
-        System.out.println((n/gcd)*(m/gcd)*gcd);
+        System.out.println((n*m)/gcd);
     }
 
     static int calcGCD(int n, int m){
