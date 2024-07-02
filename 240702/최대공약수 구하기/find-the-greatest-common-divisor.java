@@ -13,7 +13,7 @@ public class Main {
     }
 
     static void printGCD(int n, int m){
-        for(int i=n;i>0;i--){
+        for(int i=Math.min(n,m);i>0;i--){
             if(n%i==0 && m%i==0){
                 System.out.println(i);
                 return;
