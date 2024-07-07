@@ -1,10 +1,10 @@
 const printFiveStars = ()=>{
-    let s = '';
     for(let i=0;i<10;i++){
-        s+='*';
+        process.stdout.write('*')
     }
-    console.log(s);
-};
+    process.stdout.write('\n');
+}
+
 
 for(let i=0;i<5;i++){
     printFiveStars();
