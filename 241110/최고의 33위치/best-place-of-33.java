@@ -16,13 +16,15 @@ public class Main {
 
         int max = Integer.MIN_VALUE;
         for(int i=0;i<=n-3;i++){
-            int tot = 0;
-            for(int j=0;j<3;j++){
+            for(int j=0;j<=n-3;j++){
+                int tot = 0;
                 for(int k=0;k<3;k++){
-                    tot+=arr[i+j][i+k];
+                    for(int l=0;l<3;l++){
+                        tot+=arr[i+k][j+l];
+                    }
                 }
+                max = Math.max(max,tot);
             }
-            max = Math.max(max,tot);
         }
         System.out.println(max);
     }
