@@ -31,10 +31,10 @@ public class Main {
             if(tot>=m) answer++;
         }
 
-        for(int i=0;i<n;i++){
-            int num = arr[i][0];
+        for(int j=0;j<n;j++){
+            int num = arr[j][0];
             int tot = 1;
-            for(int j=1;j<n;j++){
+            for(int i=1;i<n;i++){
                 if(num == arr[i][j]) tot++;
                 else{
                     num = arr[i][j];
