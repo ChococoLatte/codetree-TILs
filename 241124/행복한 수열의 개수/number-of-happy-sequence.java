@@ -3,7 +3,6 @@ import java.util.*;
 
 public class Main {
     static int n,m;
-    static int[][] arr;
     static int answer;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -12,7 +11,8 @@ public class Main {
         n = Integer.parseInt(st.nextToken());
         m = Integer.parseInt(st.nextToken());
 
-        arr = new int[n][n];
+        int[] seq = new int[n];
+        int [][] arr = new int[n][n];
         for(int i=0;i<n;i++){
             st = new StringTokenizer(br.readLine());
             for(int j=0;j<n;j++){
@@ -21,52 +21,41 @@ public class Main {
         }
 
         answer = 0;
-        if(m == 1) answer = n*2;
-        else{
-            checkCol();
-            checkRow();
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                seq[i] = arr[i][j];
+            }
+            if(calcSeq(seq)) answer++;
+        }
+
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                seq[j] = arr[j][i];
+            }
+            if(calcSeq(seq)) answer++;
         }
 
         System.out.println(answer);
+        
     }
 
-    static void checkCol(){
+    static boolean calcSeq(int[] seq){
 
-        for(int i=0;i<n;i++){
-            int prevNum = arr[i][0];
-            int cnt = 1;
-            for(int j=1;j<n;j++){
-                if(prevNum == arr[i][j]){
-                    cnt++;
-                    if(cnt == m){
-                        answer++;
-                        break;
-                    }
-                }else{
-                    prevNum = arr[i][j];
-                    cnt = 1;
-                }
+        int cnt = 1;
+        int max = Integer.MIN_VALUE;
+
+        for(int i=1;i<n;i++){
+            if(seq[i-1] == seq[i]){
+                cnt++;
+            }else{
+                cnt = 1;
             }
-        }
-    }
 
-    static void checkRow(){
-
-        for(int i=0;i<n;i++){
-            int prevNum = arr[0][i];
-            int cnt = 1;
-            for(int j=1;j<n;j++){
-                if(prevNum == arr[j][i]){
-                    cnt++;
-                    if(cnt == m){
-                        answer++;
-                        break;
-                    }
-                }else{
-                    prevNum = arr[j][i];
-                    cnt = 1;
-                }
-            }
+            max = Math.max(max,cnt);
         }
+
+        if(max>=m) return true;
+        else return false;
+
     }
 }
