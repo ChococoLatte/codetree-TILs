@@ -3,7 +3,6 @@ import java.util.*;
 
 public class Main {
     static int n,m;
-    static int answer;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
@@ -20,7 +19,7 @@ public class Main {
             }
         }
 
-        answer = 0;
+        int answer = 0;
         for(int i=0;i<n;i++){
             for(int j=0;j<n;j++){
                 seq[i] = arr[i][j];
@@ -42,7 +41,7 @@ public class Main {
     static boolean calcSeq(int[] seq){
 
         int cnt = 1;
-        int max = Integer.MIN_VALUE;
+        int max = 1;
 
         for(int i=1;i<n;i++){
             if(seq[i-1] == seq[i]){
@@ -50,7 +49,6 @@ public class Main {
             }else{
                 cnt = 1;
             }
-
             max = Math.max(max,cnt);
         }
 
