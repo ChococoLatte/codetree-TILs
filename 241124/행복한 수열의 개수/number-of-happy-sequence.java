@@ -27,9 +27,9 @@ public class Main {
             if(calcSeq(seq)) answer++;
         }
 
-        for(int i=0;i<n;i++){
-            for(int j=0;j<n;j++){
-                seq[j] = arr[j][i];
+        for(int j=0;j<n;j++){
+            for(int i=0;i<n;i++){
+                seq[i] = arr[i][j];
             }
             if(calcSeq(seq)) answer++;
         }
@@ -52,8 +52,6 @@ public class Main {
             max = Math.max(max,cnt);
         }
 
-        if(max>=m) return true;
-        else return false;
-
+        return max>=m;
     }
 }
