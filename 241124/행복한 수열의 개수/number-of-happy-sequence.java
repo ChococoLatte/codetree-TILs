@@ -11,7 +11,7 @@ public class Main {
         m = Integer.parseInt(st.nextToken());
 
         int[] seq = new int[n];
-        int [][] arr = new int[n][n];
+        int[][] arr = new int[n][n];
         for(int i=0;i<n;i++){
             st = new StringTokenizer(br.readLine());
             for(int j=0;j<n;j++){
@@ -22,7 +22,7 @@ public class Main {
         int answer = 0;
         for(int i=0;i<n;i++){
             for(int j=0;j<n;j++){
-                seq[i] = arr[i][j];
+                seq[j] = arr[i][j];
             }
             if(calcSeq(seq)) answer++;
         }
