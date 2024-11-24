@@ -21,8 +21,11 @@ public class Main {
         }
 
         answer = 0;
-        checkCol();
-        checkRow();
+        if(m == 1) answer = n*2;
+        else{
+            checkCol();
+            checkRow();
+        }
 
         System.out.println(answer);
     }
