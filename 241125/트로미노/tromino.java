@@ -57,7 +57,7 @@ public class Main {
         }
 
         int cnt6 = 0;
-        if(x-1>0 && x-1<n && x+1>=0 && x+1<n){
+        if(x-1>=0 && x-1<n && x+1>=0 && x+1<n){
             cnt6+=(arr[x-1][y]+arr[x][y]+arr[x+1][y]);
         }
 
@@ -68,9 +68,7 @@ public class Main {
         
         int max = Integer.MIN_VALUE;
         for(int value:values){
-            if(value>max){
-                max = value;
-            }
+            max = Math.max(max,value);
         }
         
         return max;
