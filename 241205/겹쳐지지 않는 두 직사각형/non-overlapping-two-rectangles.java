@@ -27,32 +27,33 @@ public class Main {
 
         int maxSum = Integer.MIN_VALUE;
 
+        // 첫 번째 직사각형 선택
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                if (!visited[i][j]) {
-                    visited[i][j] = true;
-                    int rect1Max = dfs(i, j, i, j, i, j, 1, arr[i][j], Integer.MIN_VALUE);
+                visited[i][j] = true; // 첫 번째 직사각형 시작점
+                int rect1Max = dfs(i, j, i, j, i, j, 1, arr[i][j]);
 
-                    for (int k = 0; k < n; k++) {
-                        for (int l = 0; l < m; l++) {
-                            if (!visited[k][l]) {
-                                visited[k][l] = true;
-                                int rect2Max = dfs(k, l, k, l, k, l, 1, arr[k][l], Integer.MIN_VALUE);
-                                maxSum = Math.max(maxSum, rect1Max + rect2Max);
-                                visited[k][l] = false;
-                            }
+                // 두 번째 직사각형 선택
+                for (int k = 0; k < n; k++) {
+                    for (int l = 0; l < m; l++) {
+                        if (!visited[k][l]) {
+                            visited[k][l] = true;
+                            int rect2Max = dfs(k, l, k, l, k, l, 1, arr[k][l]);
+                            maxSum = Math.max(maxSum, rect1Max + rect2Max);
+                            visited[k][l] = false; // 복원
                         }
                     }
-                    visited[i][j] = false;
                 }
+                visited[i][j] = false; // 복원
             }
         }
 
         System.out.println(maxSum);
     }
 
-    static int dfs(int x, int y, int minX, int minY, int maxX, int maxY, int cnt, int tot, int max) {
-        max = Math.max(max, tot);
+    // 직사각형 내 최대 합 탐색
+    static int dfs(int x, int y, int minX, int minY, int maxX, int maxY, int cnt, int tot) {
+        int max = tot;
 
         for (int i = 0; i < 4; i++) {
             int nx = x + dx[i];
@@ -68,14 +69,15 @@ public class Main {
 
             if (isSquare(tmpMinX, tmpMinY, tmpMaxX, tmpMaxY, cnt + 1)) {
                 visited[nx][ny] = true;
-                max = Math.max(max, dfs(nx, ny, tmpMinX, tmpMinY, tmpMaxX, tmpMaxY, cnt + 1, tot + arr[nx][ny], max));
-                visited[nx][ny] = false;
+                max = Math.max(max, dfs(nx, ny, tmpMinX, tmpMinY, tmpMaxX, tmpMaxY, cnt + 1, tot + arr[nx][ny]));
+                visited[nx][ny] = false; // 복원
             }
         }
 
         return max;
     }
 
+    // 직사각형 유효성 검사
     static boolean isSquare(int minX, int minY, int maxX, int maxY, int cnt) {
         return ((maxX - minX) + 1) * ((maxY - minY) + 1) == cnt;
     }
