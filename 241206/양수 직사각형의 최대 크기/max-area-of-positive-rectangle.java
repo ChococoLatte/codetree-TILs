@@ -16,7 +16,6 @@ public class Main {
 
         arr = new int[n][m];
         
-        
         for(int i=0;i<n;i++){
             st = new StringTokenizer(br.readLine());
             for(int j=0;j<m;j++){
@@ -27,28 +26,29 @@ public class Main {
         max = -1;
         for(int i=0;i<n;i++){
             for(int j=0;j<m;j++){
-                visited = new boolean[n][m];
-                visited[i][j] = true;
-                dfs(i,j,1);
+                for(int k=i;k<n;k++){
+                    for(int l=j;l<m;l++){
+                        visited = new boolean[n][m];
+                        max = Math.max(max,calc(i,j,k,l));
+                    }
+                }
             }
         }
-
+        
         System.out.println(max);
     }
 
-    static void dfs(int x, int y,int cnt){
-
-        max = Math.max(max,cnt);
-
-        for(int i=0;i<4;i++){
-            int nx = x+dx[i];
-            int ny = y+dy[i];
-
-            if(nx<0 || nx>=n || ny<0 || ny>=m) continue;
-            if(visited[nx][ny] || arr[nx][ny]<0) continue;
-
-            visited[nx][ny] = true;
-            dfs(nx,ny,cnt+1);
+    static int calc(int x,int y,int gx,int gy){
+        
+        int cnt = 0;
+        for(int i=x;i<=gx;i++){
+            for(int j=y;j<=gy;j++){
+                if(arr[i][j]<0) return -1;
+                else cnt++;
+            }
         }
+
+        return cnt;
     }
+
 }
