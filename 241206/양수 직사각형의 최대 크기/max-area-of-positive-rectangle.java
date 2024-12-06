@@ -24,7 +24,7 @@ public class Main {
             }
         }
 
-        max = Integer.MIN_VALUE;
+        max = -1;
         for(int i=0;i<n;i++){
             for(int j=0;j<m;j++){
                 visited[i][j] = true;
