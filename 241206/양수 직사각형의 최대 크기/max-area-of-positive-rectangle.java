@@ -15,7 +15,7 @@ public class Main {
         m = Integer.parseInt(st.nextToken());
 
         arr = new int[n][m];
-        visited = new boolean[n][m];
+        
         
         for(int i=0;i<n;i++){
             st = new StringTokenizer(br.readLine());
@@ -27,9 +27,9 @@ public class Main {
         max = -1;
         for(int i=0;i<n;i++){
             for(int j=0;j<m;j++){
+                visited = new boolean[n][m];
                 visited[i][j] = true;
                 dfs(i,j,1);
-                visited[i][j] = false;
             }
         }
 
@@ -49,10 +49,6 @@ public class Main {
 
             visited[nx][ny] = true;
             dfs(nx,ny,cnt+1);
-            visited[nx][ny] = false;
-
         }
-
     }
-
 }
