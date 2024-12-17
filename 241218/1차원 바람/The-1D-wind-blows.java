@@ -23,7 +23,6 @@ public class Main {
         Q = Integer.parseInt(st.nextToken());
 
         arr = new int[N][M];
-        isBlowed = new boolean[N];
         for(int i=0;i<N;i++){
             st = new StringTokenizer(br.readLine());
             for(int j=0;j<M;j++){
@@ -37,6 +36,7 @@ public class Main {
             int l = Integer.parseInt(st.nextToken())-1;
             char d = st.nextToken().charAt(0);
 
+            isBlowed = new boolean[N];
             blowWind(l,d);
         }
 
