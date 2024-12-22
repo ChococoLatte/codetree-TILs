@@ -43,25 +43,26 @@ public class Main {
 
     static void rotate(int r1, int c1, int r2, int c2){
 
-        int[][] tempArr = new int[N][M];
-        copyArr(tempArr);
-
-        for(int i=c2;i>c1;i--){
-            arr[r1][i] = tempArr[r1][i-1];
-        }
-
-        for(int i=r2;i>r1;i--){
-            arr[i][c2] = tempArr[i-1][c2];
+        int tmpVal = arr[r1][c1];
+        for(int i=r1;i<r2;i++){
+            arr[i][c1] = arr[i+1][c1];
         }
 
         for(int i=c1;i<c2;i++){
-            arr[r2][i] = tempArr[r2][i+1];
+            arr[r2][i] = arr[r2][i+1];
         }
 
-        for(int i=r1;i<r2;i++){
-            arr[i][c1] = tempArr[i+1][c1];
+        for(int i=r2;i>r1;i--){
+            arr[i][c2] = arr[i-1][c2];
         }
 
+        for(int i=c2;i>c1+1;i--){
+            arr[r1][i] = arr[r1][i-1];
+        }
+
+        arr[r1][c1+1] = tmpVal;
+
+        int[][] tempArr = new int[N][M];
         copyArr(tempArr);
         for(int i=r1;i<=r2;i++){
             for(int j=c1;j<=c2;j++){
@@ -75,7 +76,7 @@ public class Main {
                     sum+=tempArr[nx][ny];
                     cnt++;
                 }
-                if(cnt!=0) arr[i][j] = (int)(sum/cnt);
+                arr[i][j] = (int)(sum/cnt);
             }
         }
     }
