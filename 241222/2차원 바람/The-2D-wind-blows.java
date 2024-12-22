@@ -15,7 +15,14 @@ public class Main {
         int Q = Integer.parseInt(st.nextToken());
 
         arr = new int[N][M];
-        while(Q->0){
+        for(int i=0;i<N;i++){
+            st = new StringTokenizer(br.readLine());
+            for(int j=0;j<M;j++){
+                arr[i][j] = Integer.parseInt(st.nextToken());
+            }
+        }
+
+        while(Q-->0){
             st = new StringTokenizer(br.readLine());
 
             int r1 = Integer.parseInt(st.nextToken())-1;
@@ -58,8 +65,8 @@ public class Main {
         copyArr(tempArr);
         for(int i=r1;i<=r2;i++){
             for(int j=c1;j<=c2;j++){
-                int sum = 0;
-                int cnt = 0;
+                int sum = tempArr[i][j];
+                int cnt = 1;
                 for(int k=0;k<4;k++){
                     int nx = i+dx[k];
                     int ny = j+dy[k];
@@ -68,12 +75,12 @@ public class Main {
                     sum+=tempArr[nx][ny];
                     cnt++;
                 }
-                if(cnt!=0) arr[i][j] = sum/cnt;
+                if(cnt!=0) arr[i][j] = (int)(sum/cnt);
             }
         }
     }
 
-    static void copyArr(int tempArr){
+    static void copyArr(int[][] tempArr){
         for(int i=0;i<N;i++){
             for(int j=0;j<M;j++){
                 tempArr[i][j] = arr[i][j];
