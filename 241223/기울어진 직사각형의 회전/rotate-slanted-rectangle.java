@@ -32,13 +32,14 @@ public class Main {
         int[] mList = {m1,m2,m3,m4};
         rotate(r,c,mList,dir);
 
-
+        StringBuilder sb = new StringBuilder();
         for(int i=0;i<N;i++){
             for(int j=0;j<N;j++){
-                System.out.print(arr[i][j]+" ");
+                sb.append(arr[i][j]).append(" ");
             }
-            System.out.println();
+            sb.append("\n");
         }
+        System.out.println(sb);
     }
 
     static void rotate(int r, int c, int[] mList, int dir){
