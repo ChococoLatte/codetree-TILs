@@ -14,14 +14,12 @@ public class Main {
 
         String input;
         while((input = br.readLine())!=null && !input.isEmpty()){
-            String[] inputAr = input.split(" ");
+            String[] inputArr = input.split(" ");
 
-            int firstIdx = Integer.parseInt(inputAr[0])-1;
-            int lastIdx = Integer.parseInt(inputAr[1])-1;
+            int firstIdx = Integer.parseInt(inputArr[0])-1;
+            int lastIdx = Integer.parseInt(inputArr[1]);
 
-            for(int i=firstIdx;i<=lastIdx;i++){
-                list.remove(firstIdx);
-            }
+            list.subList(firstIdx, lastIdx).clear();
         }
 
         System.out.println(list.size());
