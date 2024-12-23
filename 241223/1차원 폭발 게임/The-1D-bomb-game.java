@@ -36,7 +36,7 @@ public class Main {
             if (list.get(i).equals(list.get(i-1))) {
                 cnt++;
                 if(cnt >= M && (i == list.size() - 1 || !list.get(i).equals(list.get(i + 1)))){
-                    for(int j=0;j<cnt;j++){
+                    for(int j=0;j<M;j++){
                         list.remove(idx);
                     }
                     return true;
