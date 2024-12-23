@@ -37,14 +37,12 @@ public class Main {
 
         int[][] tempArr = new int[n][n];
         for(int i = 0; i < n; i++) {
-            LinkedList<Integer> list = new LinkedList<>();
-            for(int j = 0; j < n; j++) {
-                if (arr[j][i] != 0) list.add(arr[j][i]);
-            }
 
-            int index = n - 1;
-            while (!list.isEmpty()) {
-                tempArr[index--][i] = list.pollLast();
+            int idx = n-1;
+            for(int j=n-1; j>=0; j--) {
+                if(arr[j][i]==0) continue;
+                tempArr[idx][i] = arr[j][i];
+                idx--;
             }
         }
 
