@@ -35,18 +35,22 @@ public class Main {
             }
         }
 
-        for(int i=n-1;i>0;i--) {
-            for(int j=0;j<n;j++) {
-                if(arr[i][j] == 0 && arr[i-1][j]!=0){
-                    arr[i][j] = arr[i-1][j];
-                    arr[i-1][j] = 0;
-                }
+        int[][] tempArr = new int[n][n];
+        for(int i = 0; i < n; i++) {
+            LinkedList<Integer> list = new LinkedList<>();
+            for(int j = 0; j < n; j++) {
+                if (arr[j][i] != 0) list.add(arr[j][i]);
+            }
+
+            int index = n - 1;
+            while (!list.isEmpty()) {
+                tempArr[index--][i] = list.pollLast();
             }
         }
 
         for(int i=0;i<n;i++){
             for(int j=0;j<n;j++){
-                System.out.print(arr[i][j]+" ");
+                System.out.print(tempArr[i][j]+" ");
             }
             System.out.println();
         }
