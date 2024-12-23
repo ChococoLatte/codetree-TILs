@@ -12,12 +12,11 @@ public class Main {
             list.add(Integer.parseInt(br.readLine()));
         }
 
-        String input;
-        while((input = br.readLine())!=null && !input.isEmpty()){
-            String[] inputArr = input.split(" ");
+        for(int i=0;i<2;i++){
+            StringTokenizer st = new StringTokenizer(br.readLine());
 
-            int firstIdx = Integer.parseInt(inputArr[0])-1;
-            int lastIdx = Integer.parseInt(inputArr[1]);
+            int firstIdx = Integer.parseInt(st.nextToken())-1;
+            int lastIdx = Integer.parseInt(st.nextToken());
 
             list.subList(firstIdx, lastIdx).clear();
         }
