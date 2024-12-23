@@ -57,12 +57,10 @@ public class Main {
             }
         }
 
-        if(dir == 1){
-            int val = list.pollFirst();
-            list.addLast(val);
-        }else if(dir == 0){
-            int val = list.pollLast();
-            list.addFirst(val);
+        if(dir == 0){
+            list.addFirst(list.pollLast());
+        }else{
+            list.addLast(list.pollFirst());
         }
 
         for(int i=0;i<4;i++){
