@@ -8,7 +8,7 @@ public class Main {
         String s = br.readLine();
         int min = s.length();
         for(int i = 0; i < s.length(); i++){
-            s = rotate(s);
+            if(i!=0) s = rotate(s);
 
             char fValue = s.charAt(0);
             int cnt = 1;
