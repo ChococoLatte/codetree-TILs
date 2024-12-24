@@ -40,7 +40,7 @@ public class Main {
             } else {
                 // 연속된 숫자가 M개 이상인 경우 폭발
                 if (cnt >= M) {
-                    for (int j = 0; j < cnt; j++) {
+                    for (int j = 0; j < M; j++) {
                         list.remove(startIdx);
                     }
                     exploded = true;
