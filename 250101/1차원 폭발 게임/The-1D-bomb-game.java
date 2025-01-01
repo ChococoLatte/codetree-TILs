@@ -11,6 +11,11 @@ public class Main {
         n = Integer.parseInt(st.nextToken());
         m = Integer.parseInt(st.nextToken());
 
+        if(m == 1){
+            System.out.println(0);
+            return;
+        } 
+
         ArrayList<Integer> list = new ArrayList<>();
         for(int i=0;i<n;i++){
             list.add(Integer.parseInt(br.readLine()));
