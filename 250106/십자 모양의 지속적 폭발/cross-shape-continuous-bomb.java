@@ -49,6 +49,7 @@ public class Main {
         for(int i=0;i<n;i++){
             if(arr[i][c]!=0){
                 bomb(i,c);
+                break;
             }
         }
     }
