@@ -58,9 +58,9 @@ public class Main {
                         }
                     }
 
-                    if(arr[j][i] == arr[j][i+1]){
-                        arr[j][i]+=arr[j][i+1];
-                        arr[j][i+1] = 0;
+                    if(arr[j][i] == arr[j+1][i]){
+                        arr[j][i]+=arr[j+1][i];
+                        arr[j+1][i] = 0;
                     }
                 }
             }
@@ -74,9 +74,9 @@ public class Main {
                         }
                     }
 
-                    if(arr[j][i] == arr[j][i-1]){
-                        arr[j][i]+=arr[j][i-1];
-                        arr[j][i-1] = 0;
+                    if(arr[j][i] == arr[j-1][i]){
+                        arr[j][i]+=arr[j-1][i];
+                        arr[j-1][i] = 0;
                     }
                 }
             }
