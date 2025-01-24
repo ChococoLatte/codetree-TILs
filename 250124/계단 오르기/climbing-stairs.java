@@ -19,7 +19,7 @@ public class Main {
         dp[3] = 1;
 
         for(int i=4;i<=N;i++){
-            dp[i] = (dp[i-2]+dp[i-3])%100007;
+            dp[i] = (dp[i-2]%100007+dp[i-3]%100007)%100007;
         }
     }
 }
