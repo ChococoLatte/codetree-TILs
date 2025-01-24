@@ -15,13 +15,11 @@ public class Main {
 
     static void climbingStairs(int N, int[] dp){
         
-        dp[0] = 1;
-        dp[1] = 0;
         dp[2] = 1;
         dp[3] = 1;
 
         for(int i=4;i<=N;i++){
-            dp[i] = (dp[i-2]+dp[i-3])%100007;
+            dp[i] = (dp[i-2]+dp[i-3])%10007;
         }
     }
 }
