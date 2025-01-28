@@ -18,19 +18,13 @@ public class Main {
             }
         }
 
-        int maxLine = 0;
-        for(int i=0;i<n;i++){
-            boolean isEmpty = true;
-            for(int j=k-1;j<k+m-1;j++){
-                if(arr[i][j]!=0){
-                    isEmpty = false;
+        int maxLine = n-1;
+        for(int i=k-1;i<k+m-1;i++){
+            for(int j=0;j<n;j++){
+                if(arr[j][i] == 1){
+                    maxLine = Math.min(maxLine,j-1);
                     break;
                 }
-            }
-            if(isEmpty){
-                maxLine = i;
-            }else{
-                break;
             }
         }
 
