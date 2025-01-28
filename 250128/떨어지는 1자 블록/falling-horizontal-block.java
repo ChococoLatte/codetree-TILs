@@ -30,10 +30,12 @@ public class Main {
             if(isEmpty){
                 maxLine = i;
             }else{
-                for(int j=k-1;j<k+m-1;j++){
-                    arr[maxLine][j] = 1;    
-                }
+                break;
             }
+        }
+
+        for(int j=k-1;j<k+m-1;j++){
+            arr[maxLine][j] = 1;    
         }
 
         StringBuilder sb = new StringBuilder();
