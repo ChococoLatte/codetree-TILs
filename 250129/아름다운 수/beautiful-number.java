@@ -1,63 +1,48 @@
 import java.io.*;
+import java.util.*;
 
 public class Main {
-    static int n, totCnt;
-    static int[] num;
-
+    static int n,totCnt;
+    static ArrayList<Integer> list;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         n = Integer.parseInt(br.readLine());
-        num = new int[n];
-
+        list = new ArrayList<>();
         perm(0);
+
         System.out.println(totCnt);
     }
 
-    static void perm(int cnt) {
-        if (cnt == n) {
-            StringBuilder str = new StringBuilder();
-            for (int nm : num) {
-                str.append(nm);
+    static void perm(int cnt){
+
+        if(cnt == n){
+            if(isBeautiful()){
+                totCnt++;
             }
-            countString(str.toString());
             return;
         }
 
-        for (int i = 0; i < 4; i++) {
-            num[cnt] = i + 1;
-            perm(cnt + 1);
+        for(int i=0;i<4;i++){
+            list.add(i+1);
+            perm(cnt+1);
+            list.remove(list.size()-1);
         }
     }
 
-    static void countString(String str) {
-        int curCnt = 1;
-        char curChar = str.charAt(0);
-        boolean isContinuous = true;
+    static boolean isBeautiful(){
 
-        for (int i = 1; i < str.length(); i++) {
-            if (curChar != str.charAt(i)) {
-                int curNum = Character.getNumericValue(curChar);
-                if (curCnt % curNum != 0) {
-                    isContinuous = false;
-                    break;
+        for(int i=0;i<n;i+=list.get(i)){
+            if(i+list.get(i)>n){
+                return false;
+            }
+
+            for(int j=i;j<i+list.get(i);j++){
+                if(list.get(j)!=list.get(i)){
+                    return false;
                 }
-
-                curCnt = 1;
-                curChar = str.charAt(i);
-            } else {
-                curCnt++;
             }
         }
-
-        // 마지막 문자 그룹에 대한 확인
-        int lastNum = Character.getNumericValue(curChar);
-        if (curCnt % lastNum != 0) {
-            isContinuous = false;
-        }
-
-        if (isContinuous) {
-            totCnt++;
-        }
+        return true;
     }
 }
