@@ -21,7 +21,7 @@ public class Main {
         int n = Integer.parseInt(br.readLine());
         
         list = new ArrayList<>();
-        for(int i=0;i<3;i++){
+        for(int i=0;i<n;i++){
             st = new StringTokenizer(br.readLine());
 
             int x = Integer.parseInt(st.nextToken());
