@@ -55,22 +55,19 @@ public class Main {
             }
         }
 
-        // 겹치는 경우, 현재 선택을 건너뛰고 max 값 갱신
-        if (flag) {
-            dfs(cnt + 1, num);
-            return;
-        }
+        dfs(cnt+1,num);
+        if(!flag){
+            // 현재 구간을 선택한 경우
+            for (int i = p.x; i <= p.y; i++) {
+                isOverlapped[i] = true;
+            }
 
-        // 현재 구간을 선택한 경우
-        for (int i = p.x; i <= p.y; i++) {
-            isOverlapped[i] = true;
-        }
+            dfs(cnt + 1, num + 1);
 
-        dfs(cnt + 1, num + 1);
-
-        // 현재 구간만 다시 false로 되돌려야 함
-        for (int i = p.x; i <= p.y; i++) {
-            isOverlapped[i] = false;
+            // 현재 구간만 다시 false로 되돌려야 함
+            for (int i = p.x; i <= p.y; i++) {
+                isOverlapped[i] = false;
+            }
         }
     }
 }
