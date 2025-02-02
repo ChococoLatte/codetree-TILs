@@ -4,80 +4,58 @@ import java.util.*;
 public class Main {
     static int max;
     static String s;
-    static ArrayList<Character> alphabet;
-    static HashMap<Character, Integer> hm;
+    static int[] num;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        alphabet = new ArrayList<>();
-        hm = new HashMap<>();
-
+        num = new int[6];
         s = br.readLine();
-        for(int i=0;i<s.length();i++){
-            if(s.charAt(i) == '+' || s.charAt(i) == '-' || s.charAt(i) == '*') continue;
-
-            if(!alphabet.contains(s.charAt(i))){
-                alphabet.add(s.charAt(i));
-            }
-            
-            if(!hm.containsKey(s.charAt(i))){
-                hm.put(s.charAt(i),0);
-            }
-        }
 
         max = Integer.MIN_VALUE;
         dfs(0);
 
         System.out.println(max);
-
+        
     }
 
     static void dfs(int cnt){
 
-        if(cnt == alphabet.size()){
+        if(cnt == 6){
             max = Math.max(max,calc());
             return;
         }
 
         for(int i=1;i<=4;i++){
-            setValue(cnt,i);
+            num[cnt] = i;
             dfs(cnt+1);
-            setValue(cnt,0);
         }
     }
 
-    static void setValue(int cnt, int value){
+    static int getValue(char c){
 
-        char key = alphabet.get(cnt);
-        hm.put(key,value);
+        return num[c-'a'];
+
     }
 
     static int calc(){
-
-        int tot = 0;
-        char unit = ' ';
-        for(int i=0;i<s.length();i++){
-            if(s.charAt(i) == '+' || s.charAt(i) == '-' || s.charAt(i) == '*'){
-                unit = s.charAt(i);
-            }else{
-                int val = hm.get(s.charAt(i));
-                switch(unit){
-                    case '+':
-                        tot+=val;
-                        break;
-                    case '-':
-                        tot-=val;
-                        break;
-                    case '*':
-                        tot*=val;
-                        break;
-                    default:
-                        tot=val;
-                        break;
-                }
+        
+        int tot = num[s.charAt(0)-'a'];
+        for(int i=2;i<s.length();i+=2){
+            switch(s.charAt(i-1)){
+                case '+':
+                    tot+=getValue(s.charAt(i));
+                    break;
+                case '-':
+                    tot-=getValue(s.charAt(i));
+                    break;
+                case '*':
+                    tot*=getValue(s.charAt(i));
+                    break;
             }
         }
 
         return tot;
+
     }
+
 }
