@@ -39,12 +39,19 @@ public class Main {
 
     static boolean includeThreeOrMore(){
 
-        HashMap<Integer, Integer> hm = new HashMap<>();
-        for(int nm:num){
-            hm.put(nm,hm.getOrDefault(nm,0)+1);
-            if(hm.get(nm)>=3) return true;
+       if (num.length < 3) return false; 
+
+        int count = 1; 
+
+        for (int i = 1; i < num.length; i++) {
+            if (num[i] == num[i - 1]) {
+                count++; 
+                if (count >= 3) return true; 
+            } else {
+                count = 1; 
+            }
         }
 
-        return false;
+        return false; 
     }
 }
